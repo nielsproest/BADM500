@@ -16,7 +16,8 @@ import numpy as np
 
 seq_info = pd.read_csv("BRCA_clinicalMatrix",sep='\t')
 seq_labels = pd.read_csv("PAM50_filtered.csv",sep=';')
-seq_values = pd.read_csv("HiSeqV2",sep='\t')
+#seq_values = pd.read_csv("HiSeqV2",sep='\t')
+seq_values = pd.read_csv("HiSeqV2_filtered.csv")
 
 #print(seq_labels.dtypes)
 

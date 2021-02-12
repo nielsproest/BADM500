@@ -9,6 +9,8 @@ from six import StringIO
 from IPython.display import Image  
 import pydotplus
 from concurrent.futures import ThreadPoolExecutor
+import threading
+import time
 
 #Load data
 print("Load data")
@@ -29,12 +31,12 @@ y_labels = [
 
 y = [y_labels.index(i) for i in y]
 
-def gen_tree(max_depth):
+def gen_tree(max_depth, seed=1):
 	#Train
 	#print("Train")
 
 	# Split dataset into training set and test set
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) # 70% training and 30% test
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=seed) # 70% training and 30% test
 
 	# Create Decision Tree classifer object
 	#criterion="gini" or "entropy"
@@ -73,11 +75,34 @@ def test(num):
 	clf, acc = gen_tree(max_depth=num)
 	gen_image(clf, num, acc)
 
-for i in range(5):
+"""for i in range(5):
 	test(None)
 	test(3)
 	test(4)
-	test(5)
+	test(5)"""
+
+def unlimited(num, dbg):
+	clf, acc = None, 0
+
+	print("Start")
+	try:
+		for i in range(200):
+			n_clf, n_acc = gen_tree(max_depth=num, seed=None)
+			if (n_acc > acc):
+				clf, acc = n_clf, n_acc
+
+			if (dbg):
+				print("Acc {:.6f}, Iteration {}".format(acc, i), end="\r")
+	except KeyboardInterrupt:
+		pass
+
+	print("Generating image")
+	gen_image(clf, num, acc)
+
+threading.Thread(target=unlimited, args=(3,True,)).start()
+threading.Thread(target=unlimited, args=(4,False,)).start()
+threading.Thread(target=unlimited, args=(5,False,)).start()
+unlimited(None,False)
 
 """
 print("Starting work")
