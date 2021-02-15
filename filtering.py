@@ -45,8 +45,6 @@ def add(f, seq):
 		who = seq_data.loc[seq_data["sampleID"] == row["Sample ID"]]
 		if "FEMALE" != who["gender"].item():
 			continue
-		if "Basal" == who["PAM50Call_RNAseq"].item():
-			continue
 		if "Metastatic" == who["sample_type"].item():
 			continue
 		if "Breast" != who["tumor_tissue_site"].item():

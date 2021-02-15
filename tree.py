@@ -74,19 +74,14 @@ def gen_image(clf, max_depth, acc):
 def test(num):
 	clf, acc = gen_tree(max_depth=num)
 	gen_image(clf, num, acc)
-
-"""for i in range(5):
-	test(None)
-	test(3)
-	test(4)
-	test(5)"""
+	print(dict(zip(X.columns, clf.feature_importances_)))
 
 def unlimited(num, dbg):
 	clf, acc = None, 0
 
 	print("Start")
 	try:
-		for i in range(200):
+		for i in range(50):
 			n_clf, n_acc = gen_tree(max_depth=num, seed=None)
 			if (n_acc > acc):
 				clf, acc = n_clf, n_acc
@@ -99,10 +94,26 @@ def unlimited(num, dbg):
 	print("Generating image")
 	gen_image(clf, num, acc)
 
-threading.Thread(target=unlimited, args=(3,True,)).start()
-threading.Thread(target=unlimited, args=(4,False,)).start()
-threading.Thread(target=unlimited, args=(5,False,)).start()
-unlimited(None,False)
+"""for i in range(5):
+	test(None)
+	test(3)
+	test(4)
+	test(5)"""
+
+t1 = threading.Thread(target=unlimited, args=(3,True,))
+t2 = threading.Thread(target=unlimited, args=(4,False,))
+t3 = threading.Thread(target=unlimited, args=(5,False,))
+t4 = threading.Thread(target=unlimited, args=(None,False,))
+
+t1.start()
+t2.start()
+t3.start()
+t4.start()
+
+t1.join()
+t2.join()
+t3.join()
+t4.join()
 
 """
 print("Starting work")
