@@ -68,7 +68,7 @@ for i in genes:
 	#print(i)
 	what.append([dist(genes[i]),i])
 
-genes_to_keep = 15
+genes_to_keep = 50
 what.sort(key=lambda l: l[0])
 what = [i[1] for i in what]
 what = what[-genes_to_keep:]
@@ -93,5 +93,5 @@ for k, v in enumerate(average.keys()):
 plt.legend(loc=3,bbox_to_anchor=(1,0))
 #plt.show()
 
-plt.savefig("showre2.png")
+plt.savefig("showre2_50.png")
 
