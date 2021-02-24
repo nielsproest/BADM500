@@ -27,8 +27,9 @@ for i in genes:
 	#plt.show()
 
 	#input(vals, outliers)
-with open("outliers.json", "w") as f:
-	data = [[i, outlier[i]] for i in outlier]
-	data.sort(key=lambda l: l[1])
-	data.reverse()
+
+data = [[i, outlier[i]] for i in outlier]
+data.sort(key=lambda l: l[1])
+data.reverse()
+with open("outliers_{}.json".format(str(len(data))), "w") as f:
 	json.dump(data, f, indent="\t")
