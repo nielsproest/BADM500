@@ -14,7 +14,7 @@ samples = list(dt["sampleID"])
 outlier = {}
 for i in genes:
 	vals = np.array(dt[i])
-	outliers = mad_based_outlier(vals)
+	outliers = mad_based_outlier(vals, thresh=3.5)
 	for k, v in enumerate(outliers):
 		if v:
 			who = samples[k] #headers are ignored
@@ -23,13 +23,14 @@ for i in genes:
 				outlier[who] = 1
 			else:
 				outlier[who] = outlier[who] + 1
-	#plot(vals)
-	#plt.show()
+	print(i)
+	plot(vals)
+	plt.show()
 
 	#input(vals, outliers)
 
 data = [[i, outlier[i]] for i in outlier]
 data.sort(key=lambda l: l[1])
 data.reverse()
-with open("outliers_{}.json".format(str(len(data))), "w") as f:
+with open("outliers_t25_{}.json".format(str(len(data))), "w") as f:
 	json.dump(data, f, indent="\t")

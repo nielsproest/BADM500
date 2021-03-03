@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+from statistics import pstdev, pvariance, stdev, variance
 
 seq_info = pd.read_csv("../BRCA/BRCA_clinicalMatrix_filtered.csv",sep=";")
 seq_labels = pd.read_csv("../PAM50/PAM50_filtered.csv",sep=";")
@@ -63,12 +64,15 @@ for idx, gene_key in enumerate(grid):
 def dist(L):
 	return (max(L) - min(L))/(len(L)-1)
 
+def dist2(L):
+	return pstdev(L)
+
 what = []
 for i in genes:
 	#print(i)
-	what.append([dist(genes[i]),i])
+	what.append([dist2(genes[i]),i])
 
-genes_to_keep = 50
+genes_to_keep = 15
 what.sort(key=lambda l: l[0])
 what = [i[1] for i in what]
 what = what[-genes_to_keep:]
@@ -81,10 +85,10 @@ f.set_figheight(2^9)
 
 #x = list(genes.keys())
 x = what
-print(x)
+#print(x)
 for k, v in enumerate(average.keys()):
 	y = [genes[i][k] for i in x]
-	print(y)
+	#print(y)
 	plt.plot(x,y,label=list(average.keys())[k])
 
 #for gg,graph in enumerate(graphs):
@@ -93,5 +97,5 @@ for k, v in enumerate(average.keys()):
 plt.legend(loc=3,bbox_to_anchor=(1,0))
 #plt.show()
 
-plt.savefig("showre2_50.png")
+plt.savefig("showre3_15.png")
 

@@ -15,9 +15,17 @@ import numpy as np
 }"""
 
 seq_info = pd.read_csv("../BRCA/BRCA_clinicalMatrix_filtered.csv",sep=";")
-#seq_labels = pd.read_csv("../PAM50/PAM50_filtered.csv",sep=';')
+seq_labels = pd.read_csv("../PAM50/PAM50_filtered.csv",sep=';')
 seq_values = pd.read_csv("HiSeqV2",sep='\t')
 
+"""
+>>> len(seq_info["sampleID"])
+1229
+>>> len(seq_labels["Sample ID"])
+3989
+>>> len(seq_values.columns.values)
+1219
+"""
 
 values = []
 labels = []
@@ -39,7 +47,11 @@ for index, row in seq_info.iterrows():
 	for i in seq_values[data_id]:
 		tbl.append(i)
 
-	tbl.append(row["PAM50Call_RNAseq"])
+	try:
+		tbl.append(seq_labels.loc[seq_labels["Sample ID"] == data_id,"PAM50"].values[0])
+	except:
+		continue
+	#tbl.append(row["PAM50Call_RNAseq"])
 
 	values.append(tbl)
 
