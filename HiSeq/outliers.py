@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from outlib import mad_based_outlier, percentile_based_outlier, plot
+#from scipy.stats import median_absolute_deviation
+
 import json, collections
 
 dt = pd.read_csv("master.csv",sep=";")
@@ -14,7 +16,8 @@ samples = list(dt["sampleID"])
 outlier = {}
 for i in genes:
 	vals = np.array(dt[i])
-	outliers = mad_based_outlier(vals, thresh=3.5)
+	outliers = mad_based_outlier(vals,thresh=5)
+	#input(outliers)
 	for k, v in enumerate(outliers):
 		if v:
 			who = samples[k] #headers are ignored
@@ -23,7 +26,7 @@ for i in genes:
 				outlier[who] = 1
 			else:
 				outlier[who] = outlier[who] + 1
-	print(i)
+	#print(i)
 	plot(vals)
 	plt.show()
 
@@ -32,5 +35,5 @@ for i in genes:
 data = [[i, outlier[i]] for i in outlier]
 data.sort(key=lambda l: l[1])
 data.reverse()
-with open("outliers_t25_{}.json".format(str(len(data))), "w") as f:
+with open("outliers_{}.json".format(str(len(data))), "w") as f:
 	json.dump(data, f, indent="\t")

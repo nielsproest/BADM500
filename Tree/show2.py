@@ -89,7 +89,7 @@ x = what
 for k, v in enumerate(average.keys()):
 	y = [genes[i][k] for i in x]
 	#print(y)
-	plt.plot(x,y,label=list(average.keys())[k])
+	plt.plot(x,y,label=list(average.keys())[k], marker='o')
 
 #for gg,graph in enumerate(graphs):
 #	plt.plot(grid,graph,label=list(average.keys())[gg])
@@ -97,5 +97,5 @@ for k, v in enumerate(average.keys()):
 plt.legend(loc=3,bbox_to_anchor=(1,0))
 #plt.show()
 
-plt.savefig("showre3_15.png")
+plt.savefig("showre4_15.png")
 
