@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import math
 from statistics import pstdev, pvariance, stdev, variance
 
 seq_info = pd.read_csv("../BRCA/BRCA_clinicalMatrix_filtered.csv",sep=";")
@@ -76,12 +77,17 @@ genes_to_keep = 15
 what.sort(key=lambda l: l[0])
 what = [i[1] for i in what]
 what = what[-genes_to_keep:]
-input(what)
+#input(what)
+print(what)
 
 # plotting a line plot after changing it's width and height 
 f = plt.figure() 
 f.set_figwidth(2^16) 
 f.set_figheight(2^9) 
+
+selected = list(average.keys()).index("Basal")
+y = {i: genes[i][selected] for i in what}
+what.sort(key=lambda x: y[x])
 
 #x = list(genes.keys())
 x = what
@@ -91,11 +97,13 @@ for k, v in enumerate(average.keys()):
 	#print(y)
 	plt.plot(x,y,label=list(average.keys())[k], marker='o')
 
+for i in range(genes_to_keep):
+	plt.axvline(i)
 #for gg,graph in enumerate(graphs):
 #	plt.plot(grid,graph,label=list(average.keys())[gg])
 
 plt.legend(loc=3,bbox_to_anchor=(1,0))
 #plt.show()
 
-plt.savefig("showre4_15.png")
+plt.savefig("showre5_15_Basal.png")
 

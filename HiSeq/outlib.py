@@ -15,7 +15,7 @@ def main():
 
 	plt.show()
 
-def mad_based_outlier(points, thresh=3.5):
+"""def mad_based_outlier(points, thresh=3.5):
 	if len(points.shape) == 1:
 		points = points[:,None]
 	median = np.median(points, axis=0)
@@ -25,9 +25,9 @@ def mad_based_outlier(points, thresh=3.5):
 
 	modified_z_score = 0.6745 * diff / med_abs_deviation
 
-	return modified_z_score > thresh
+	return modified_z_score > thresh"""
 
-"""def mad_based_outlier(points, thresh=3.5):
+def mad_based_outlier(points, thresh=3.5):
 	if type(points) is list:
 		points = np.asarray(points)
 	if len(points.shape) == 1:
@@ -38,8 +38,7 @@ def mad_based_outlier(points, thresh=3.5):
 
 	mod_z_score = norm.ppf(0.75) * abs_dev / med_abs_dev
 	almost = mod_z_score > thresh
-	return [i[0] for i in almost]"""
-
+	return [i[0] for i in almost]
 
 def percentile_based_outlier(data, threshold=95):
 	diff = (100 - threshold) / 2.0

@@ -12,11 +12,12 @@ types = dt.columns.values
 genes = types[1:-1]
 samples = list(dt["sampleID"])
 
+j=0
 #print(genes)
 outlier = {}
 for i in genes:
 	vals = np.array(dt[i])
-	outliers = mad_based_outlier(vals,thresh=5)
+	outliers = percentile_based_outlier(vals)
 	#input(outliers)
 	for k, v in enumerate(outliers):
 		if v:
@@ -27,8 +28,11 @@ for i in genes:
 			else:
 				outlier[who] = outlier[who] + 1
 	#print(i)
+
 	plot(vals)
-	plt.show()
+	j=j+1
+	if (j>=4):
+		plt.show()
 
 	#input(vals, outliers)
 
