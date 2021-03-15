@@ -1,0 +1,43 @@
+
+Show changes you did to data (removed samples etc.)
+Find zero value genes with low variance and remove
+Make plan: ideas for supervised approaches
+	Decision trees
+		Gradient boosting
+	Perceptrons (not that transparent)
+	Principal components (not interpretable)
+	Support vector machine (SVM)
+	Iso cluster
+
+ZEROES causes worse predictions
+
+Classify data
+Try finding your own labels (clusters etc.)
+Test split how
+
+Send plan by 16th
+
+Meeting 18th at 16:00-17:00
+
+
+
+Niels - Gradient
+Martin - SVM
+Kasper - Zeros (PCA Remove 0 variance)
+Kasper - Test split
+
+
+
+
+
+
+"""
+Show changes you did to data (removed samples etc.)
+Make plan: ideas for supervised approaches
+Classify data
+Test split how
+
+Send plan by 16th
+
+Meeting 18th at 10:00
+"""

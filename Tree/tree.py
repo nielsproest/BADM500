@@ -14,8 +14,8 @@ import time
 
 #Load data
 print("Load data")
-dt = pd.read_csv("../HiSeq/master.csv")
-print(dt.head())
+dt = pd.read_csv("../HiSeq/master.csv",sep=";")
+#print(dt.head())
 
 feature_cols = [dt.columns.values[x] for x in range(1,len(dt)-1)]
 X = dt[feature_cols] # Features
@@ -68,7 +68,7 @@ def gen_image(clf, max_depth, acc):
 					filled=True, rounded=True,
 					special_characters=True,feature_names = feature_cols, class_names=y_labels)
 	graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
-	graph.write_png("tree2_d{}_{:.6f}.png".format(max_depth,acc))
+	graph.write_png("tree3_d{}_{:.6f}.png".format(max_depth,acc))
 	Image(graph.create_png())
 
 def test(num):
@@ -94,13 +94,18 @@ def unlimited(num, dbg):
 	print("Generating image")
 	gen_image(clf, num, acc)
 
+test(3)
+test(4)
+test(5)
+test(None)
+
 """for i in range(5):
 	test(None)
 	test(3)
 	test(4)
 	test(5)"""
 
-t1 = threading.Thread(target=unlimited, args=(3,False,))
+"""t1 = threading.Thread(target=unlimited, args=(3,False,))
 t2 = threading.Thread(target=unlimited, args=(4,False,))
 t3 = threading.Thread(target=unlimited, args=(5,False,))
 t4 = threading.Thread(target=unlimited, args=(None,True,))
@@ -113,7 +118,7 @@ t4.start()
 t1.join()
 t2.join()
 t3.join()
-t4.join()
+t4.join()"""
 
 """
 print("Starting work")

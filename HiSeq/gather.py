@@ -44,12 +44,16 @@ for index, row in seq_info.iterrows():
 	tbl = []
 	tbl.append(data_id)
 
+	#if 0 in seq_values[data_id]:
+	#	continue
+
 	for i in seq_values[data_id]:
 		tbl.append(i)
 
 	try:
 		tbl.append(seq_labels.loc[seq_labels["Sample ID"] == data_id,"PAM50"].values[0])
 	except:
+		print(data_id)
 		continue
 	#tbl.append(row["PAM50Call_RNAseq"])
 
@@ -57,3 +61,4 @@ for index, row in seq_info.iterrows():
 
 df = pd.DataFrame(np.array(values), columns=labels)
 df.to_csv("master.csv", index=False, sep=";")
+
