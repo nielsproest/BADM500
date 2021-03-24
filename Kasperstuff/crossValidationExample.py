@@ -53,4 +53,4 @@ pyplot.errorbar(folds, means, yerr=[mins, maxs], fmt='o')
 # plot the ideal case in a separate color
 pyplot.plot(folds, [ideal for _ in range(len(folds))], color='r')
 # show the plot
-pyplot.show()
+pyplot.savefig("temp.png")

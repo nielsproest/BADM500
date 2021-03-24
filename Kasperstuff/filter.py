@@ -20,6 +20,8 @@ for row, data in enumerate(variance):
 
 # taking the indeces from top17807 and reinserting ID's into the index
 varianceIndexed = variance[:17807].index.insert(0, "sampleID")
+# Adding the Pam50_label index back in as well
+varianceIndexed = varianceIndexed.append(pd.Index(["PAM50_Label"]))
 print(variance)
 # filtering the data by the genes in the top 17807. AKA removing all genes with variance <0.2
 data = df.filter(varianceIndexed)

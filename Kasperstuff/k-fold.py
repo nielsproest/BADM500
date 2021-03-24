@@ -25,7 +25,7 @@ kfold = KFold(10, shuffle=True, random_state=1)
 
 # create model to use as example
 model = LogisticRegression(max_iter=100000)
-# evaluate model
+# evaluate model with data and labels
 X = dataNoNames
 y = labels
 scores = cross_val_score(model, X, y, scoring='accuracy', cv=kfold, n_jobs=-1)
