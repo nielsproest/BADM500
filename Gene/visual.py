@@ -10,7 +10,8 @@ TBL = {
 	"Basal": "black",
 }
 
-dt = pd.read_csv("../HiSeq/master.csv")
+dt = pd.read_csv("../HiSeq/master.csv",sep=";")
+#print(dt.head())
 
 cnt = {
 	"LumA": [],

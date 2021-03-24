@@ -87,17 +87,17 @@ def unlimited(num, dbg):
 				clf, acc = n_clf, n_acc
 
 			if (dbg):
-				print("Acc {:.6f}, Iteration {}".format(acc, i), end="\r")
+				print("Acc c, Iteration {}".format(acc, i), end="\r")
 	except KeyboardInterrupt:
 		pass
 
 	print("Generating image")
 	gen_image(clf, num, acc)
 
-test(3)
+"""test(3)
 test(4)
 test(5)
-test(None)
+test(None)"""
 
 """for i in range(5):
 	test(None)
@@ -105,7 +105,7 @@ test(None)
 	test(4)
 	test(5)"""
 
-"""t1 = threading.Thread(target=unlimited, args=(3,False,))
+t1 = threading.Thread(target=unlimited, args=(3,False,))
 t2 = threading.Thread(target=unlimited, args=(4,False,))
 t3 = threading.Thread(target=unlimited, args=(5,False,))
 t4 = threading.Thread(target=unlimited, args=(None,True,))
@@ -118,7 +118,7 @@ t4.start()
 t1.join()
 t2.join()
 t3.join()
-t4.join()"""
+t4.join()
 
 """
 print("Starting work")

@@ -68,7 +68,7 @@ def dist(L):
 def dist2(L):
 	return pstdev(L)
 
-what = []
+"""what = []
 for i in genes:
 	#print(i)
 	what.append([dist2(genes[i]),i])
@@ -78,7 +78,9 @@ what.sort(key=lambda l: l[0])
 what = [i[1] for i in what]
 what = what[-genes_to_keep:]
 #input(what)
-print(what)
+print(what)"""
+what=["NDC80","STAC2","GTSE1","TBC1D9","SPRY2","DLGAP5","CFB","GPR77","ZP2","CKS1B"]
+genes_to_keep=len(what)
 
 # plotting a line plot after changing it's width and height 
 f = plt.figure() 
@@ -105,5 +107,6 @@ for i in range(genes_to_keep):
 plt.legend(loc=3,bbox_to_anchor=(1,0))
 #plt.show()
 
-plt.savefig("showre5_15_Basal.png")
+#plt.savefig("showre5_15_Basal.png")
+plt.savefig("../GradientBoost/ga2_3_plot.png")
 

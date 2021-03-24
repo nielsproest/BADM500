@@ -39,6 +39,7 @@ for index, row in seq_info.iterrows():
 	data_id = row["sampleID"]
 
 	if not data_id in seq_values:
+		#print("Missing in seq_values: ", data_id)
 		continue
 
 	tbl = []
@@ -53,7 +54,7 @@ for index, row in seq_info.iterrows():
 	try:
 		tbl.append(seq_labels.loc[seq_labels["Sample ID"] == data_id,"PAM50"].values[0])
 	except:
-		print(data_id)
+		print("Missing in seq_labels: ", data_id)
 		continue
 	#tbl.append(row["PAM50Call_RNAseq"])
 
