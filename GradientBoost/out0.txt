@@ -1,3 +1,0 @@
-Accuracy None: 87.95 (3.06)
-Accuracy 3: 87.94 (2.97)
-Accuracy 4: 88.21 (2.93)

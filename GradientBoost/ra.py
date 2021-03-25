@@ -1,7 +1,7 @@
-from xgboost import XGBClassifier
 from xgboost import plot_tree
 from xgboost import plot_importance
 import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedKFold
 from sklearn.model_selection import cross_val_score
@@ -31,13 +31,14 @@ y_labels = [
 
 y = np.array([y_labels.index(i) for i in y])
 
-if False:
-	with open("out.txt", "w") as f:
+if True:
+	with open("outforest.txt", "w") as f:
 		def startified_attempt(depth=None):
 			print("Classifying...")
-			model = XGBClassifier(max_depth=depth, use_label_encoder=False)
+			model = RandomForestClassifier(max_depth=depth)
 			kfold = StratifiedKFold(random_state=0) #n_splits=10, 
 			results = cross_val_score(model, X, y, cv=kfold)
+			#print("Accuracy: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
 			print("Accuracy {}: {:.2f} ({:.2f})".format(depth, results.mean()*100, results.std()*100))
 			f.write("Accuracy {}: {:.2f} ({:.2f})\n".format(depth, results.mean()*100, results.std()*100))
 
@@ -50,22 +51,26 @@ if False:
 		startified_attempt(depth=8)
 		startified_attempt(depth=9)
 		startified_attempt(depth=10)
+		startified_attempt(depth=11)
+		startified_attempt(depth=12)
+		startified_attempt(depth=13)
+		startified_attempt(depth=14)
 
-if True:
-	clf = XGBClassifier(max_depth=8)
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+if False:
+	clf = RandomForestClassifier(max_depth=8)
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=0)
 
 	clf.fit(X_train, y_train)
 	acc = clf.score(X_test, y_test)
 
 	#print("Accuracy: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
-	print("Accuracy {}: {:.2f}".format(6, acc))
+	print("Accuracy {}: {:.2f}".format(8, acc))
 
-	plot_tree(clf, label=y_labels) #, feature_names=feature_cols
-	plt.savefig("ga2_{}_{:.6f}.png".format(6, acc), dpi=600)
+	#plot_tree(clf, label=y_labels) #, feature_names=feature_cols
+	#plt.savefig("ga2_{}_{:.6f}.png".format(8, acc), dpi=600)
 
-	plot_importance(clf, max_num_features=10)
-	plt.savefig("ga2_{}_importance_table.png".format(6), dpi=600)
+	#plot_importance(clf, max_num_features=10)
+	#plt.savefig("ga2_{}_importance_table.png".format(8), dpi=600)
 
 if False:
 	# Test split
@@ -73,7 +78,7 @@ if False:
 
 	def attempt(depth=None):
 		# Classifier
-		clf = XGBClassifier(max_depth=depth)
+		clf = RandomForestClassifier(max_depth=depth)
 		clf.fit(X_train, y_train)
 
 		acc = clf.score(X_test, y_test)
