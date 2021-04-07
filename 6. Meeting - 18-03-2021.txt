@@ -1,0 +1,4 @@
+KFold on
+	Gradient Boost
+	SVM
+Random forest

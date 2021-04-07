@@ -17,9 +17,19 @@ print("Load data")
 dt = pd.read_csv("../Kasperstuff/masterNew.csv",sep=";")
 print(dt.head())
 
-data = dt.values #dt.to_numpy() in old versions
+"""data = dt.values #dt.to_numpy() in old versions
 X = np.array([i[1:-1] for i in data])
 y = np.array([i[-1] for i in data])
+feature_cols = list(dt.columns)[1:-1]"""
+
+#The martin way
+first_column = dt.columns[0]
+X = dt.drop([first_column], axis=1)
+feature_labels = X.columns
+y = X.iloc[:,-1]
+X=X.iloc[:, :-1]
+print(X)
+print(y)
 
 y_labels = [ 
 	'Normal',
@@ -36,7 +46,7 @@ if False:
 		def startified_attempt(depth=None):
 			print("Classifying...")
 			model = XGBClassifier(max_depth=depth, use_label_encoder=False)
-			kfold = StratifiedKFold(random_state=0) #n_splits=10, 
+			kfold = StratifiedKFold(shuffle=True, random_state=0) #n_splits=10, 
 			results = cross_val_score(model, X, y, cv=kfold)
 			print("Accuracy {}: {:.2f} ({:.2f})".format(depth, results.mean()*100, results.std()*100))
 			f.write("Accuracy {}: {:.2f} ({:.2f})\n".format(depth, results.mean()*100, results.std()*100))
@@ -52,20 +62,20 @@ if False:
 		startified_attempt(depth=10)
 
 if True:
-	clf = XGBClassifier(max_depth=8)
+	clf = XGBClassifier(max_depth=5)
 	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
 
 	clf.fit(X_train, y_train)
 	acc = clf.score(X_test, y_test)
 
 	#print("Accuracy: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
-	print("Accuracy {}: {:.2f}".format(6, acc))
+	print("Accuracy {}: {:.2f}".format(5, acc))
 
 	plot_tree(clf, label=y_labels) #, feature_names=feature_cols
-	plt.savefig("ga2_{}_{:.6f}.png".format(6, acc), dpi=600)
+	plt.savefig("ga2_{}_{:.6f}.png".format(5, acc), dpi=600)
 
-	plot_importance(clf, max_num_features=10)
-	plt.savefig("ga2_{}_importance_table.png".format(6), dpi=600)
+	plot_importance(clf, max_num_features=50)
+	plt.savefig("ga2_{}_importance_table50.png".format(5), dpi=600, height=0.8)
 
 if False:
 	# Test split
