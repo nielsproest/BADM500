@@ -1,0 +1,5 @@
+Classification
+Normalized when filtering by variance
+Can you answer whether PAM50 genes are stable
+
+Meeting 08-04-2021 kl 12:00
