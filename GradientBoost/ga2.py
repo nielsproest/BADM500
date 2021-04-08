@@ -17,7 +17,10 @@ print("Load data")
 dt = pd.read_csv("../Kasperstuff/masterNew.csv",sep=";")
 print(dt.head())
 
-feature_cols = [dt.columns.values[x] for x in range(1,len(dt)-1)]
+print(len(dt))
+print(len(dt.columns))
+
+feature_cols = [dt.columns.values[x] for x in range(1,len(dt.columns)-1)]
 X = dt[feature_cols] # Features
 y = dt[dt.columns.values[-1]] # Target variable
 
@@ -65,8 +68,8 @@ print("Accuracy {}: {:.2f}".format(8, acc))
 #plot_tree(clf, label=y_labels) #, feature_names=feature_cols
 #plt.savefig("ga2_{}_{:.6f}.png".format(8, acc), dpi=600)
 
-#plot_importance(clf, max_num_features=10)
-#plt.savefig("ga2_{}_importance_table.png".format(8), dpi=600)
+plot_importance(clf, max_num_features=20)
+plt.savefig("ga2_{}_importance_table.png".format(8), dpi=600)
 
 if False:
 	# Test split
