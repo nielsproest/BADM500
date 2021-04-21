@@ -71,11 +71,27 @@ if True:
 	#print("Accuracy: %.2f%% (%.2f%%)" % (results.mean()*100, results.std()*100))
 	print("Accuracy {}: {:.2f}".format(5, acc))
 
-	plot_tree(clf, label=y_labels) #, feature_names=feature_cols
-	plt.savefig("ga2_{}_{:.6f}.png".format(5, acc), dpi=600)
+	#plot_tree(clf, label=y_labels) #, feature_names=feature_cols
+	#plt.savefig("ga2_{}_{:.6f}.png".format(5, acc), dpi=600)
 
-	plot_importance(clf, max_num_features=50)
-	plt.savefig("ga2_{}_importance_table50.png".format(5), dpi=600, height=0.8)
+	#plot_importance(clf, max_num_features=50)
+	#plt.savefig("ga2_{}_importance_table50.png".format(5), dpi=600, height=0.8)
+
+	"""things = []
+	for col,score in zip(X_train.columns,clf.feature_importances_):
+		things.append([col,score])
+	things.sort(key=lambda x: x[1])
+	things.reverse()
+	print(things[:50])"""
+	results=pd.DataFrame()
+	results['columns']=X.columns
+	results['importances'] = clf.feature_importances_
+	results.sort_values(by='importances',ascending=False,inplace=True)
+
+	print(results[:50])
+
+
+
 
 if False:
 	# Test split
