@@ -36,9 +36,14 @@ if True:
 
 	dt = dt[sorted(dt)]
 	dt = dt.sort_index(ascending=False)
+	dt = dt.abs()
+	for i in dt.columns.values:
+		idx = dt[i].idxmax()
+		print(i, idx, dt[i][idx])
+
 
 	print(dt)
-	ax = sns.heatmap(dt, annot=False, vmin=-1, vmax=1, xticklabels=True, yticklabels=True)
+	ax = sns.heatmap(dt, annot=False, vmin=0, vmax=1, xticklabels=True, yticklabels=True)
 
 	plt.xlabel("from_gb")
 	plt.ylabel("pam50")

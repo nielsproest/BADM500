@@ -1,0 +1,9 @@
+Gene correlation
+Feature importance?
+cloud.sdu.dk
+
+KFold folds boxplot (visualize)
+Are features stable across folds
+Unsupervised continue (maybe not KMeans)
+
+15-04-2021 12:00 - 13:00

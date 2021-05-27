@@ -1,0 +1,16 @@
+important gene (from previous importance) correlation to pam50 genes (some missing?) (heatmap it)
+cluster by pearson correlation (heiratical)
+biclustering
+https://en.wikipedia.org/wiki/Clustering_high-dimensional_data
+
+start working on report
+intro
+	breast-cancer
+	dataset
+materials and methods
+	svm etc.
+results
+conclusion
+
+Thusday same time
+22-04-2021 12:00-13:00

@@ -1,0 +1,60 @@
+start working on report
+start working on structure
+	chapters
+	bulletpoints to what should be written
+	logical flow through thesis
+
+	send to tobias and richard with questions
+
+abstract
+	summary
+	half a page
+table of contents
+intro
+	breast-cancer
+	why this
+scientific background
+	what we used
+	explain general methods
+materials
+	dataset
+	others
+methods (methodology)
+	what we did
+	why we did
+	how we did
+	reference result if needed
+results
+	present our findings
+	put into perspektive (is this what we expected, surprising, runtime, is this an issue?, etc.)
+		present our thinking
+discussion
+	critique our work
+	defend our work
+conclusion
+	close the intro, did we solve it?
+references
+	source our claims or prove it
+	cite used sources
+	cite used ideas
+
+Pages as few as possible but sufficiently many
+	normally 30-40 pages
+Write so an external person can follow
+Justify decisions
+	why use svm etc.
+	show that you understand
+	what is a gene etc.
+	explain data
+	explain why we dropped methods, if it helps
+		bad results or indicating something
+	explain why results are interesting/what they show
+
+for next week
+	prepare rapport
+	review work
+	overview work
+
+Next meeting
+	30-04-2021 kl 11:00-12:00
+	same zoom room
