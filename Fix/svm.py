@@ -27,7 +27,15 @@ print("Ranking", selector.ranking_)
 f = selector.get_support(1)
 
 X = df.drop([i for i in X.columns.values if not i in f], axis=1)"""
-svm50 = ['TCEAL8', 'WDR67', 'KRT20', 'ERBB2', 'FAM189A2', 'PRPH2', 'PPIL5', 'INTS4L1', 'TEX19', 'PPP1R14C', 'SPAG16', 'LCN6', 'CKS1B', 'SOHLH1', 'ZIC2', 'MIA', 'PNLIPRP2', 'XRRA1', 'RACGAP1P', 'POU3F3', 'CLDN18', 'RCVRN', 'RGPD1', 'PLA2G10', 'FGFBP1', 'FBXO5', 'MBOAT1', 'CNIH3', 'FOXC1', 'PARP2', 'TMEM59L', 'FADS1', 'MAGEB18', 'TCAM1P', 'TCF19', 'SCN3B', 'RNF2', 'TYRP1', 'TMEM194B', 'PAGE5', 'RHO', 'ABCC2', 'PPY2', 'PGR', 'HMGB2', 'CES7', 'TRIM6-TRIM34', 'EFNA2', 'LGSN', 'ZNF451']
+#svm50 = ['TCEAL8', 'WDR67', 'KRT20', 'ERBB2', 'FAM189A2', 'PRPH2', 'PPIL5', 'INTS4L1', 'TEX19', 'PPP1R14C', 'SPAG16', 'LCN6', 'CKS1B', 'SOHLH1', 'ZIC2', 'MIA', 'PNLIPRP2', 'XRRA1', 'RACGAP1P', 'POU3F3', 'CLDN18', 'RCVRN', 'RGPD1', 'PLA2G10', 'FGFBP1', 'FBXO5', 'MBOAT1', 'CNIH3', 'FOXC1', 'PARP2', 'TMEM59L', 'FADS1', 'MAGEB18', 'TCAM1P', 'TCF19', 'SCN3B', 'RNF2', 'TYRP1', 'TMEM194B', 'PAGE5', 'RHO', 'ABCC2', 'PPY2', 'PGR', 'HMGB2', 'CES7', 'TRIM6-TRIM34', 'EFNA2', 'LGSN', 'ZNF451']
+svm50 = ['ABCC2', 'AGR3', 'C11orf90', 'C19orf77', 'C6orf97', 'CCDC6',
+       'CCNB1', 'CHRAC1', 'CITED4', 'CKS1B', 'CLEC4F', 'EFNA2', 'ERBB2',
+       'ESR1', 'FADS1', 'FGD1', 'FGD3', 'FGFBP1', 'FOXC1', 'GLB1',
+       'GPR160', 'KRT20', 'LAMC3', 'LCN1', 'LCT', 'LOC145837', 'MAG',
+       'MAPT', 'MBOAT1', 'MIA', 'NPFFR1', 'NUDT9P1', 'OLAH', 'PHYHD1',
+       'PIF1', 'PPP4R4', 'RETN', 'RNASE3', 'SLC6A11', 'SLC6A2', 'SMC4',
+       'SPAG5', 'SPOCK3', 'TAC1', 'TACC2', 'TCAM1P', 'TCEAL7', 'TCF19',
+       'TMEM194B', 'WDR67']
 
 X = X.drop([i for i in X.columns.values if not i in svm50], axis=1)
 

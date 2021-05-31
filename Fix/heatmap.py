@@ -4,8 +4,8 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-name = "rand_0.8802378984109488"
-fine_name = "Random Forest"
+name = "svm_0.9326674014880133"
+fine_name = "SVM"
 
 with open("{}.json".format(name)) as f:
 	data = json.load(f)
